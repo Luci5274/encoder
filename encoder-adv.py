@@ -2,6 +2,37 @@ import string
 import random
 import json
 
+def menu():
+    print("\n Cipher Tool")
+    print("1. Encrypt a message")
+    print("2. Decrypt a message")
+    print("3. Exit")
+
+    choice = input('make your choice: ')
+
+
+    if choice == "1":
+        user_message = input("Enter message to encrypt: ")
+        cipher_key = generate_cipher_key()
+        encrypted_output = encrypt_message(user_message, cipher_key)
+
+        print(f"\n Encrypted Message:\n{encrypted_output}")
+        save_cipher_key(cipher_key)
+
+    elif choice == "2":
+        encrypted_input = input("Enter the encrypted message: ")
+        cipher_key = load_cipher_key()
+        decrypted_output = decrypt_message(encrypted_input, cipher_key)
+
+        print(f"\n Decrypted Message:\n{decrypted_output}")
+
+    elif choice == "3":
+        print("Goodbye!")
+        exit()
+
+    else:
+        print(" Invalid choice. Try again.")
+
 def generate_cipher_key():
     alphabet = string.ascii_lowercase
     shuffled_alphabet = list(alphabet)
@@ -57,36 +88,6 @@ def decrypt_message(encrypted_text, cipher_key):
 
     return decrypted_text
 
-def menu():
-    print("\n Cipher Tool")
-    print("1. Encrypt a message")
-    print("2. Decrypt a message")
-    print("3. Exit")
-
-    choice = input('make your choice: ')
-
-
-    if choice == "1":
-        user_message = input("Enter message to encrypt: ")
-        cipher_key = generate_cipher_key()
-        encrypted_output = encrypt_message(user_message, cipher_key)
-
-        print(f"\n Encrypted Message:\n{encrypted_output}")
-        save_cipher_key(cipher_key)
-
-    elif choice == "2":
-        encrypted_input = input("Enter the encrypted message: ")
-        cipher_key = load_cipher_key()
-        decrypted_output = decrypt_message(encrypted_input, cipher_key)
-
-        print(f"\n Decrypted Message:\n{decrypted_output}")
-
-    elif choice == "3":
-        print("Goodbye!")
-        exit()
-
-    else:
-        print(" Invalid choice. Try again.")
 
 if __name__ == "__main__":
     while True:
