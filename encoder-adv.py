@@ -23,7 +23,7 @@ def encrypt_message(message_text, cipher_key):
 
     return encrypted_text
 
-def encrypt_message(message_text, cipher_key):
+def encrypt_messages(message_text, cipher_key):
     message_text = message_text.lower()
     encrypted_text = ""
 
@@ -35,4 +35,7 @@ def encrypt_message(message_text, cipher_key):
 
     return encrypted_text
 
+def  save_cipher_key(filename='cipher_key.json'):
+    with open(filename,'r') as key_file:
+        return json.load(key_file)
 
